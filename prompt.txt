@@ -1,0 +1,370 @@
+Build a premium personal portfolio website from scratch.
+
+Important:
+Do NOT copy the reference website directly.
+Use it only as inspiration for quality, smoothness, spacing, animation feel, and premium presentation.
+The design must look original, modern, blackish, clean, and professional.
+
+Reference inspiration:
+https://puneetrawat.in/
+
+My profile:
+I am Nikhil Namdev.
+I am a Full Stack Developer / Frontend Engineer.
+I work with React.js, Next.js, Node.js, Express.js, MongoDB, Tailwind CSS, GSAP, Framer Motion, Socket.io, OAuth, JWT, REST APIs, and automation tools.
+
+Tech stack:
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- GSAP
+- Framer Motion
+- Lucide React icons
+- Responsive design
+- Clean component-based architecture
+
+Main goal:
+Create a premium developer portfolio that helps me look strong for frontend, React, MERN, and full-stack developer roles.
+
+Theme:
+- Black / dark premium theme
+- Subtle gradients
+- Glassmorphism cards
+- Soft borders
+- Smooth hover effects
+- Modern typography
+- Developer-focused but creative
+- Should feel like a high-quality SaaS/product landing page mixed with a personal portfolio
+
+Pages / Sections:
+
+1. Hero Section
+Create a powerful first screen.
+
+Content:
+- Name: Nikhil Namdev
+- Main heading:
+  “Building modern web experiences with clean UI and scalable code.”
+- Dynamic animated role text:
+  It should keep changing smoothly between:
+  - Full Stack Developer
+  - Frontend Engineer
+  - React Developer
+  - MERN Stack Developer
+  - Next.js Developer
+
+Animation requirement:
+- Use GSAP or Framer Motion for text reveal.
+- Dynamic role text should animate with fade/slide/split-text style.
+- Add subtle background animation like gradient blobs, grid pattern, particles, or glowing orbs.
+- Add CTA buttons:
+  - View Projects
+  - Download Resume
+  - Contact Me
+
+Resume:
+- Add a public resume PDF inside /public/resume/Nikhil_Namdev_Resume.pdf
+- Download Resume button should directly download this PDF.
+
+2. About Section
+Explain who I am in a strong but simple way.
+
+Content direction:
+I am a React / Full Stack Developer from Indore with experience building production-level frontend screens, SaaS dashboards, authentication flows, automation dashboards, and interactive user interfaces. I enjoy turning ideas into smooth, responsive, real-world web applications.
+
+Add:
+- Small profile image placeholder or custom developer illustration area.
+- Cards for:
+  - 1+ Year Experience
+  - 40+ Screens Built
+  - Full Stack Projects
+  - Production UI Experience
+
+3. Skills Section
+Create a beautiful skills section.
+
+Categories:
+Frontend:
+- React.js
+- Next.js
+- TypeScript
+- JavaScript
+- Tailwind CSS
+- HTML5
+- CSS3
+
+Backend:
+- Node.js
+- Express.js
+- MongoDB
+- REST APIs
+- JWT
+- OAuth 2.0
+
+Tools:
+- Git
+- GitHub
+- Vercel
+- Render
+- Docker
+- n8n
+- Postman
+
+Animation:
+- Use animated skill cards or pill badges.
+- On hover, cards should glow slightly.
+- Use stagger animation when section enters viewport.
+
+4. Projects Section
+Create a premium projects section with project cards.
+
+Projects to include:
+
+Project 1:
+Name: Job-Pilot
+Tagline: AI-Powered Job Automation Dashboard
+Description:
+A full-stack dashboard that collects job opportunities, filters relevant roles, removes duplicates, scores jobs using AI, and displays them in a clean dashboard.
+Tech:
+Next.js, React, Tailwind CSS, MongoDB, n8n, Gemini AI, SerpAPI
+Highlights:
+- AI job scoring
+- Duplicate removal
+- Job dashboard
+- Automation pipeline
+- Status tracking
+
+Project 2:
+Name: ByteBite
+Tagline: Full-Stack Video-Commerce Engine
+Description:
+A vertical video-commerce platform inspired by modern short-video experiences with smooth autoplay, media uploads, and interactive product discovery.
+Tech:
+React.js, Node.js, Express.js, MongoDB, ImageKit, GSAP
+Highlights:
+- Vertical video feed
+- Auto play/pause logic
+- Media upload pipeline
+- JWT auth
+- Product interactions
+
+Project 3:
+Name: Project-Sync
+Tagline: Collaborative Workspace Platform
+Description:
+A real-time workspace platform with task boards, drag-and-drop updates, authentication, and real-time collaboration using Socket.io.
+Tech:
+React.js, Node.js, Socket.io, MongoDB, JWT, OAuth
+Highlights:
+- Real-time drag and drop
+- Google/GitHub OAuth
+- Team workspace
+- Task board
+- Live updates
+
+Project 4:
+Name: Outliny
+Tagline: SaaS Frontend Experience
+Description:
+A production-level SaaS interface where I worked on multiple responsive screens, clean UI flows, authentication integration, and performance-focused frontend development.
+Tech:
+Next.js, React.js, Tailwind CSS, Context API, OAuth, Webhooks
+Highlights:
+- 40+ production screens
+- Google OAuth integration
+- Webhook integration
+- Lazy loading
+- Reusable components
+
+Project card design:
+- Large glass cards
+- Project image placeholder or custom gradient mockup
+- Tech badges
+- View Details button
+- GitHub / Live buttons where links can be added later
+- Smooth hover lift animation
+- GSAP scroll reveal
+
+5. Experience / Timeline Section
+Create a vertical timeline.
+
+Items:
+1.
+Role: React Developer
+Company: Softinator Techlabs, Indore
+Duration: Dec 2024 – Present
+Description:
+Working on a SaaS product with Next.js and React, building production-ready screens, integrating OAuth, webhooks, and improving frontend performance.
+
+2.
+Role: React Developer Intern
+Company: Codes For Tomorrow
+Duration: Oct 2024 – Dec 2024
+Description:
+Converted Figma designs into responsive React interfaces and worked on clean frontend modules.
+
+3.
+Role: Frontend / Full Stack Projects
+Duration: 2024 – Present
+Description:
+Built multiple full-stack projects including Job-Pilot, ByteBite, and Project-Sync using React, Next.js, Node.js, MongoDB, and modern UI libraries.
+
+Timeline design:
+- Vertical line
+- Glowing dots
+- Cards alternating or aligned cleanly
+- Scroll reveal animation
+
+6. Services / What I Can Build Section
+Add a section showing what kind of work I can do.
+
+Cards:
+- Frontend Development
+- Full Stack Web Apps
+- SaaS Dashboards
+- API Integration
+- Authentication Systems
+- Automation Dashboards
+
+Each card should have icon, title, short description, hover animation.
+
+7. Contact Section
+Create a clean contact section.
+
+Content:
+- Heading: “Let’s build something great.”
+- Short text: Available for frontend, React, MERN, and full-stack opportunities.
+- Add contact cards:
+  - Email
+  - LinkedIn
+  - GitHub
+  - Location: Indore, India
+
+Add a contact form UI:
+- Name
+- Email
+- Message
+- Send Message button
+
+For now, form can be frontend-only.
+Add a TODO comment where backend/email integration can be added later.
+
+8. Footer
+Simple premium footer:
+- Nikhil Namdev
+- Full Stack Developer / Frontend Engineer
+- Social icons
+- Copyright
+
+Animation Requirements:
+- Use GSAP for hero entrance and scroll-triggered section animations.
+- Use Framer Motion for small component-level animations.
+- Use smooth stagger animations.
+- Add hover interactions.
+- Avoid over-animation. Keep it premium and smooth.
+
+Image Requirements:
+- Add custom placeholder areas for project images.
+- Use gradient mockup cards if real images are not available.
+- Create space where I can later add my own images/screenshots.
+- Do not use random copyrighted images.
+- Use original CSS gradients, abstract shapes, icons, or local placeholders.
+
+Folder Structure:
+Create clean structure like this:
+
+src/
+  app/
+    layout.tsx
+    page.tsx
+    globals.css
+
+  components/
+    layout/
+      Navbar.tsx
+      Footer.tsx
+
+    sections/
+      HeroSection.tsx
+      AboutSection.tsx
+      SkillsSection.tsx
+      ProjectsSection.tsx
+      ExperienceTimeline.tsx
+      ServicesSection.tsx
+      ContactSection.tsx
+
+    ui/
+      SectionHeading.tsx
+      AnimatedButton.tsx
+      SkillCard.tsx
+      ProjectCard.tsx
+      TimelineItem.tsx
+      MagneticButton.tsx
+
+  data/
+    skills.ts
+    projects.ts
+    experience.ts
+    services.ts
+    socials.ts
+
+  hooks/
+    useGsapAnimation.ts
+
+  lib/
+    utils.ts
+
+public/
+  resume/
+    Nikhil_Namdev_Resume.pdf
+
+  images/
+    projects/
+      job-pilot.png
+      bytebite.png
+      project-sync.png
+      outliny.png
+
+Implementation Rules:
+- Use TypeScript properly.
+- Keep components reusable.
+- Do not hardcode all data inside components. Put skills, projects, experience, and social links inside /data files.
+- Make the UI fully responsive for mobile, tablet, and desktop.
+- Navbar should be sticky/fixed with blur background.
+- Add active hover states.
+- Add smooth scrolling.
+- Make CTA buttons scroll to correct sections.
+- Download Resume button should work.
+- Keep code clean and readable.
+- Add only necessary comments for tricky animation logic.
+- Do not add too many comments.
+- Do not create messy over-engineered code.
+
+Design Details:
+- Background: #050505 or similar dark shade.
+- Use subtle radial gradients.
+- Use border color like white/10.
+- Text color: white, gray-300, gray-400.
+- Accent colors: cyan, violet, blue, or emerald gradient.
+- Buttons should have premium glow effect.
+- Cards should have rounded-2xl or rounded-3xl.
+- Use max-width container for clean layout.
+- Add enough spacing between sections.
+
+Extra Features:
+- Add a small “Available for opportunities” badge in hero.
+- Add animated tech stack strip/marquee if possible.
+- Add scroll progress indicator at top if possible.
+- Add cursor glow effect only if it does not hurt performance.
+- Add mobile menu for navbar.
+- Add SEO metadata in layout.tsx:
+  title: Nikhil Namdev | Full Stack Developer
+  description: Portfolio of Nikhil Namdev, Full Stack Developer and Frontend Engineer specializing in React, Next.js, Node.js, and modern web applications.
+
+Final Output:
+Build the complete portfolio website with all files.
+Make sure npm run dev works without errors.
+Do not leave broken imports.
+Do not use placeholder lorem ipsum text.
+Use my real project and profile content from above.
+After implementation, check the app for TypeScript errors, broken imports, hydration issues, responsive layout issues, and animation errors. Fix them before finishing.

@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background: #050505;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #050505;
+  color: #ffffff;
+  font-family: var(--font-inter), Inter, system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.28);
+  color: #ffffff;
+}
+
+.section-container {
+  width: min(100% - 2rem, 1180px);
+  margin-inline: auto;
+}
+
+.glass-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(18px);
+}
+
+.marquee-track {
+  animation: marquee 22s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-chip {
+  transform-origin: center;
+}
+
+.split-parent {
+  overflow: hidden;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.split-piece {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.gradient-text {
+  display: inline-block;
+  width: fit-content;
+  background-image: linear-gradient(90deg, #E6FBFF 0%, #67E8F9 40%, #22D3EE 70%, #99F6E4 100%);
+  background-size: 280% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  color: transparent;
+  animation: gradientText 4s ease-in-out infinite alternate;
+}
+
+.gradient-text-pause:hover {
+  animation-play-state: paused;
+}
+
+.gradient-text .split-parent,
+.gradient-text .split-piece {
+  background-image: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  color: transparent;
+}
+
+.gradual-blur {
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.gradual-blur-bottom {
+  bottom: 0;
+  background:
+    linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.72)),
+    linear-gradient(to bottom, rgba(5, 5, 5, 0), rgba(5, 5, 5, 0.95));
+  backdrop-filter: blur(3px);
+  mask-image: linear-gradient(to bottom, transparent, black 45%, black);
+}
+
+.gradual-blur-top {
+  top: 0;
+  background: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.8));
+  backdrop-filter: blur(3px);
+  mask-image: linear-gradient(to top, transparent, black 45%, black);
+}
+
+.border-glow-card {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  position: relative;
+  border-radius: 1.5rem;
+  isolation: isolate;
+}
+
+.border-glow-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background:
+    radial-gradient(240px circle at var(--glow-x) var(--glow-y), rgba(103, 232, 249, 0.95), transparent 42%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+  opacity: 0.48;
+  transition: opacity 0.3s ease;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.border-glow-card:hover::before {
+  opacity: 1;
+}
+
+.particles-field {
+  position: absolute;
+  inset: 0;
+  z-index: -5;
+  overflow: hidden;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.particle-dot {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(103, 232, 249, 0.8);
+  box-shadow: 0 0 22px rgba(34, 211, 238, 0.45);
+  animation: particleFloat 7s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes gradientText {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translate3d(16px, -22px, 0) scale(1.4);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    width: min(100% - 1.25rem, 1180px);
+  }
+
+  .split-parent {
+    overflow: visible;
+  }
+
+  .marquee-track {
+    animation-duration: 28s;
+  }
+}
