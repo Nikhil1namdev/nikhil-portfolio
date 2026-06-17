@@ -99,7 +99,13 @@ export function HeroSection() {
               <AnimatedButton href="#projects">View Projects</AnimatedButton>
             </MagneticButton>
             <MagneticButton>
-              <AnimatedButton href="/resume/Nikhil_Namdev_Resume.pdf" download variant="secondary">
+              <AnimatedButton
+                href="/resume/Nikhil_Namdev_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                showDownloadIcon
+                variant="secondary"
+              >
                 Download Resume
               </AnimatedButton>
             </MagneticButton>

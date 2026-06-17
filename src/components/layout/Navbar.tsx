@@ -55,7 +55,8 @@ export function Navbar() {
 
           <Link
             href="/resume/Nikhil_Namdev_Resume.pdf"
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-sm font-semibold text-cyan-100 transition hover:bg-cyan-300 hover:text-black md:inline-flex"
           >
             Resume
@@ -85,10 +86,11 @@ export function Navbar() {
               ))}
               <Link
                 href="/resume/Nikhil_Namdev_Resume.pdf"
-                download
-                className="mt-2 block rounded-2xl bg-cyan-300 px-4 py-3 text-sm font-semibold text-black"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 block rounded-2xl bg-cyan-300 px-4 py-3 text-sm font-semibold text-black text-center"
               >
-                Download Resume
+                View Resume
               </Link>
             </div>
           </div>

@@ -8,15 +8,30 @@ type AnimatedButtonProps = {
   variant?: "primary" | "secondary";
   download?: boolean;
   className?: string;
+  target?: string;
+  rel?: string;
+  showDownloadIcon?: boolean;
 };
 
-export function AnimatedButton({ href, children, variant = "primary", download, className }: AnimatedButtonProps) {
+export function AnimatedButton({
+  href,
+  children,
+  variant = "primary",
+  download,
+  className,
+  target,
+  rel,
+  showDownloadIcon
+}: AnimatedButtonProps) {
   const isPrimary = variant === "primary";
+  const hasDownloadIcon = download || showDownloadIcon;
 
   return (
     <Link
       href={href}
       download={download}
+      target={target}
+      rel={rel}
       className={cn(
         "group inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition duration-300",
         isPrimary
@@ -25,9 +40,9 @@ export function AnimatedButton({ href, children, variant = "primary", download, 
         className
       )}
     >
-      {download ? <Download className="h-4 w-4" /> : null}
+      {hasDownloadIcon ? <Download className="h-4 w-4" /> : null}
       {children}
-      {!download ? <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /> : null}
+      {!hasDownloadIcon ? <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /> : null}
     </Link>
   );
 }
