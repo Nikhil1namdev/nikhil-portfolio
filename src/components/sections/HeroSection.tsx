@@ -1,213 +1,266 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import gsap from "gsap";
-import { ArrowDown, Sparkles } from "lucide-react";
-import { AnimatedButton } from "@/components/ui/AnimatedButton";
-import { MagneticButton } from "@/components/ui/MagneticButton";
-import { Particles } from "@/components/ui/Particles";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  ExternalLink,
+  Github,
+  Linkedin,
+  Mail,
+  Sparkles
+} from "lucide-react";
+import { Magnetic } from "@/components/ui/Magnetic";
 
-const roles = ["Full Stack Developer", "Frontend Engineer", "React Developer", "MERN Stack Developer", "Next.js Developer"];
+const showcaseProjects = [
+  {
+    id: "job-pilot",
+    title: "Job Pilot",
+    category: "AI Automation Platform",
+    image: "/images/projects/job-pilot.png",
+    stack: ["Next.js 14", "MongoDB", "n8n", "Gemini AI"],
+    metrics: "Automated scoring & deduplication",
+    live: "https://job-pilot-dashboard-peach.vercel.app/"
+  },
+  {
+    id: "bytebite",
+    title: "ByteBite",
+    category: "Video-Commerce Engine",
+    image: "/images/projects/bytebite.png",
+    stack: ["React.js", "Node.js", "Express", "ImageKit"],
+    metrics: "Autoplay feed & smooth interaction",
+    live: "https://food-view-project.vercel.app/"
+  },
+  {
+    id: "project-sync",
+    title: "Project Sync",
+    category: "Real-time Collaboration",
+    image: "/images/projects/project-sync.png",
+    stack: ["React.js", "Socket.io", "OAuth 2.0", "MongoDB"],
+    metrics: "Live drag-and-drop workspace",
+    live: "https://project-sync-lac.vercel.app/"
+  }
+];
 
 export function HeroSection() {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const heroRef = useRef<HTMLElement>(null);
-  const roleRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    const context = gsap.context(() => {
-      gsap.fromTo(
-        "[data-hero-reveal]",
-        { autoAlpha: 0, y: 34 },
-        { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.12, ease: "power3.out" }
-      );
-
-      gsap.to("[data-float-card]", {
-        y: -12,
-        duration: 2.2,
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-        stagger: 0.25
-      });
-    }, heroRef);
-
-    return () => context.revert();
-  }, []);
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      if (!roleRef.current) return;
-      gsap.to(roleRef.current, {
-        y: -14,
-        autoAlpha: 0,
-        duration: 0.28,
-        ease: "power2.in",
-        onComplete: () => {
-          setRoleIndex((current) => (current + 1) % roles.length);
-          gsap.fromTo(roleRef.current, { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.38, ease: "power2.out" });
-        }
-      });
-    }, 2200);
-
-    return () => window.clearInterval(interval);
-  }, []);
+  const [activeTab, setActiveTab] = useState(0);
+  const activeProject = showcaseProjects[activeTab];
 
   return (
-    <section ref={heroRef} id="home" className="relative min-h-screen overflow-hidden pt-32">
-      <div className="absolute inset-0 -z-20 bg-[#050505]" />
-      <div className="absolute inset-0 -z-10 bg-grid-pattern bg-[size:48px_48px] opacity-30 [mask-image:radial-gradient(circle_at_center,black,transparent_78%)]" />
-      <div className="absolute left-[-10%] top-20 -z-10 h-80 w-80 rounded-full bg-cyan-400/20 blur-3xl" />
-      <div className="absolute right-[-8%] top-40 -z-10 h-96 w-96 rounded-full bg-violet-500/20 blur-3xl" />
-      <div className="absolute bottom-0 left-1/2 -z-10 h-80 w-[70vw] -translate-x-1/2 rounded-full bg-blue-500/10 blur-3xl" />
-      <Particles />
-
-      <div className="section-container grid items-center gap-8 pb-12 pt-4 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 lg:pb-16">
-        <div>
-          <div data-hero-reveal className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-4 py-2 text-xs font-medium text-cyan-100">
-            <Sparkles className="h-3.5 w-3.5" />
-            Available for opportunities
-          </div>
-
-          <p data-hero-reveal className="mt-6 text-sm font-semibold uppercase tracking-[0.32em] text-gray-400">
-            Nikhil Namdev
-          </p>
-          <h1
-            data-hero-reveal
-            className="mt-3 max-w-3xl text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.12]"
+    <section id="home" className="relative pt-36 pb-20 lg:pt-44 lg:pb-32 overflow-hidden">
+      <div className="section-container">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.12fr_0.88fr] lg:gap-16">
+          {/* Left Column: Authoritative Editorial Statement */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-8"
           >
-            Building modern web experiences with clean UI and scalable code.
-          </h1>
-          <p data-hero-reveal className="mt-6 text-lg font-medium text-gray-300 sm:text-xl">
-            I am a{" "}
-            <span className="inline-flex min-w-[240px] overflow-hidden align-bottom sm:min-w-[280px]">
-              <span
-                ref={roleRef}
-                className="bg-gradient-to-r from-cyan-400 via-teal-300 to-cyan-300 bg-clip-text font-bold text-transparent"
-              >
-                {roles[roleIndex]}
+            {/* Status Pill */}
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 text-xs font-mono text-zinc-300 backdrop-blur-md">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
-            </span>
-          </p>
-          <p data-hero-reveal className="mt-4 max-w-xl text-sm leading-relaxed text-gray-400 sm:text-base">
-            Modern React, Next.js, MERN dashboards, auth flows, automation panels, and interactive interfaces built with a product-first mindset.
-          </p>
+              <span>Available for Full-time Roles & Contracts</span>
+            </div>
 
-          <div data-hero-reveal className="mt-8 flex flex-wrap gap-4">
-            <MagneticButton>
-              <AnimatedButton href="#projects">View Projects</AnimatedButton>
-            </MagneticButton>
-            <MagneticButton>
-              <AnimatedButton
-                href="/resume/Nikhil_Namdev_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                showDownloadIcon
-                variant="secondary"
-              >
-                Download Resume
-              </AnimatedButton>
-            </MagneticButton>
-            <MagneticButton>
-              <AnimatedButton href="#contact" variant="secondary">
-                Contact Me
-              </AnimatedButton>
-            </MagneticButton>
-          </div>
-        </div>
+            {/* Dominant Editorial Display Typography */}
+            <h1 className="text-4xl font-normal tracking-[-0.035em] text-zinc-100 sm:text-5xl md:text-6xl lg:text-[4.25rem] lg:leading-[1.06]">
+              Engineering digital products with{" "}
+              <span className="font-semibold text-white">
+                uncompromising craft
+              </span>{" "}
+              & clean architecture.
+            </h1>
 
-        <div data-hero-reveal className="relative">
-          <div className="absolute -inset-8 rounded-full bg-cyan-300/15 blur-3xl" />
-          <div className="relative mx-auto max-w-[520px]">
-            <div className="absolute -right-4 top-8 h-28 w-28 rounded-full bg-cyan-300/20 blur-2xl" />
-            <div className="absolute -bottom-8 left-8 h-40 w-40 rounded-full bg-violet-500/20 blur-3xl" />
+            {/* Sub-statement */}
+            <p className="max-w-xl text-base sm:text-lg lg:text-xl leading-relaxed text-zinc-400 font-normal">
+              I am <span className="text-zinc-100 font-medium">Nikhil Namdev</span>, a Frontend Engineer & Full Stack Developer from Indore. I build production-ready SaaS dashboards, AI automation pipelines, and modern web applications with React, Next.js, and TypeScript.
+            </p>
 
-            <div className="group relative min-h-[460px] sm:min-h-[500px] lg:min-h-[480px] xl:min-h-[560px] overflow-hidden rounded-[2rem] border border-white/15 bg-[#08080b]/30 shadow-[0_0_50px_rgba(34,211,238,0.12)] group-hover:shadow-[0_0_60px_rgba(34,211,238,0.22)] group-hover:border-cyan-500/30 transition duration-500 backdrop-blur">
-              {/* Browser Top Bar */}
-              <div className="absolute top-0 inset-x-0 z-20 flex items-center justify-between border-b border-white/10 bg-[#050507]/90 px-4 py-3">
-                <div className="flex gap-1.5">
-                  <div className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
-                  <div className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
-                  <div className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
+            {/* Primary & Secondary Actions with Magnetic Physics */}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <Magnetic strength={0.25}>
+                <Link
+                  href="#projects"
+                  className="group inline-flex items-center gap-2.5 rounded-full bg-zinc-100 px-7 py-3.5 text-xs font-mono font-medium text-zinc-950 uppercase tracking-wider transition-all duration-200 hover:bg-white hover:shadow-lg active:scale-95"
+                >
+                  <span>Explore Selected Work</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Magnetic>
+
+              <Magnetic strength={0.25}>
+                <Link
+                  href="/resume/Nikhil_Namdev_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-6 py-3.5 text-xs font-mono font-medium text-zinc-300 transition-all duration-200 hover:border-white/25 hover:bg-white/[0.08] hover:text-white"
+                >
+                  <span>View Resume</span>
+                  <ArrowUpRight className="h-4 w-4 text-zinc-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
+                </Link>
+              </Magnetic>
+
+              {/* Direct Quick Social Links */}
+              <div className="flex items-center gap-2 pl-2">
+                <Link
+                  href="https://github.com/nikhilnamdev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.02] text-zinc-400 transition hover:border-white/25 hover:text-white"
+                >
+                  <Github className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="https://www.linkedin.com/in/nikhilnamdev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.02] text-zinc-400 transition hover:border-white/25 hover:text-white"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="mailto:nikhilnamdev31@gmail.com"
+                  aria-label="Send Email"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.02] text-zinc-400 transition hover:border-white/25 hover:text-white"
+                >
+                  <Mail className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Clean Metrics Ledger Strip */}
+            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-white/[0.08] text-xs font-mono">
+              <div>
+                <p className="text-zinc-100 font-medium text-base">40+ Screens</p>
+                <p className="text-xs text-zinc-500 mt-1">Production UI Built</p>
+              </div>
+              <div>
+                <p className="text-zinc-100 font-medium text-base">Full-Stack</p>
+                <p className="text-xs text-zinc-500 mt-1">Next.js & MERN</p>
+              </div>
+              <div>
+                <p className="text-zinc-100 font-medium text-base">Indore, IN</p>
+                <p className="text-xs text-zinc-500 mt-1">Remote / Relocate</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Column: Prominent Widescreen Showcase Window */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
+          >
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#121215] shadow-2xl">
+              {/* Window Title Bar */}
+              <div className="flex items-center justify-between border-b border-white/[0.08] bg-[#16161a] px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
+                  <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
+                  <span className="h-3 w-3 rounded-full bg-[#27c93f]" />
                 </div>
-                <div className="h-5 w-44 rounded bg-white/5 border border-white/5 text-[9px] text-gray-400 flex items-center justify-center font-mono select-none">
-                  nikhilnamdev.dev/projects
+
+                <div className="flex items-center gap-1.5 rounded-md bg-black/40 px-3 py-1 text-xs font-mono text-zinc-400 border border-white/[0.05]">
+                  <span>nikhil.dev / {activeProject.id}</span>
                 </div>
-                <div className="w-12" />
+
+                <Link
+                  href={activeProject.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-xs font-mono text-sky-400 hover:text-sky-300 transition-colors"
+                >
+                  <span>Live</span>
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </Link>
               </div>
 
-              {/* Project Screenshots Collage */}
-              <div className="relative w-full h-full pt-16 pb-24 px-6 flex flex-col gap-6 select-none">
-                {/* Card 1: Job Pilot */}
-                <div className="absolute top-18 left-6 w-[78%] rounded-xl border border-white/10 bg-[#0a0a0c] shadow-2xl overflow-hidden transform -rotate-2 group-hover:rotate-[-1deg] group-hover:translate-x-1 group-hover:-translate-y-1 transition duration-500">
-                  <div className="bg-[#121214] px-2 py-1 border-b border-white/5 flex items-center justify-between">
-                    <span className="text-[9px] font-semibold text-gray-400">Job-Pilot</span>
-                    <div className="h-1.5 w-8 rounded bg-white/10" />
-                  </div>
-                  <Image
-                    src="/images/projects/job-pilot.png"
-                    alt="Job Pilot"
-                    width={380}
-                    height={190}
-                    className="w-full h-auto object-cover opacity-93 brightness-[0.96] contrast-[1.03] group-hover:opacity-100 group-hover:brightness-100 transition duration-500"
-                  />
-                </div>
-
-                {/* Card 2: ByteBite */}
-                <div className="absolute top-36 right-6 w-[78%] rounded-xl border border-white/10 bg-[#0a0a0c] shadow-2xl overflow-hidden transform rotate-3 group-hover:rotate-[1deg] group-hover:-translate-x-1 group-hover:translate-y-1 transition duration-500 z-10">
-                  <div className="bg-[#121214] px-2 py-1 border-b border-white/5 flex items-center justify-between">
-                    <span className="text-[9px] font-semibold text-gray-400">ByteBite</span>
-                    <div className="h-1.5 w-8 rounded bg-white/10" />
-                  </div>
-                  <Image
-                    src="/images/projects/bytebite.png"
-                    alt="ByteBite"
-                    width={380}
-                    height={180}
-                    className="w-full h-auto object-cover opacity-93 brightness-[0.96] contrast-[1.03] group-hover:opacity-100 group-hover:brightness-100 transition duration-500"
-                  />
-                </div>
-
-                {/* Card 3: Project Sync */}
-                <div className="absolute top-[236px] left-8 w-[78%] rounded-xl border border-white/10 bg-[#0a0a0c] shadow-2xl overflow-hidden transform -rotate-1 group-hover:rotate-0 group-hover:translate-x-1.5 transition duration-500">
-                  <div className="bg-[#121214] px-2 py-1 border-b border-white/5 flex items-center justify-between">
-                    <span className="text-[9px] font-semibold text-gray-400">Project-Sync</span>
-                    <div className="h-1.5 w-8 rounded bg-white/10" />
-                  </div>
-                  <Image
-                    src="/images/projects/project-sync.png"
-                    alt="Project Sync"
-                    width={380}
-                    height={180}
-                    className="w-full h-auto object-cover opacity-93 brightness-[0.96] contrast-[1.03] group-hover:opacity-100 group-hover:brightness-100 transition duration-500"
-                  />
-                </div>
+              {/* Tab Navigation */}
+              <div className="flex items-center border-b border-white/[0.06] bg-[#101014] px-3 overflow-x-auto">
+                {showcaseProjects.map((project, idx) => (
+                  <button
+                    key={project.id}
+                    onClick={() => setActiveTab(idx)}
+                    className={`relative flex items-center gap-2 px-4 py-3 text-xs font-mono transition-all whitespace-nowrap ${
+                      activeTab === idx
+                        ? "text-zinc-100 font-medium"
+                        : "text-zinc-500 hover:text-zinc-300"
+                    }`}
+                  >
+                    <span>0{idx + 1}.</span>
+                    <span>{project.title}</span>
+                    {activeTab === idx && (
+                      <motion.div
+                        layoutId="activeTabUnderline"
+                        className="absolute bottom-0 inset-x-2 h-[2px] bg-sky-400"
+                      />
+                    )}
+                  </button>
+                ))}
               </div>
 
-              {/* Dark subtle overlay for extra contrast */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+              {/* Prominent Screenshot Viewport */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/80">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeProject.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="relative h-full w-full"
+                  >
+                    <Image
+                      src={activeProject.image}
+                      alt={`${activeProject.title} interface preview`}
+                      fill
+                      priority
+                      className="object-cover object-top"
+                      sizes="(min-width: 1024px) 45vw, 95vw"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
-              {/* Compact bottom overlay */}
-              <div className="absolute inset-x-4 bottom-4 z-20 rounded-xl border border-cyan-500/30 bg-[#08080a]/90 px-4 py-3 shadow-[0_15px_30px_rgba(0,0,0,0.6)] transition duration-300 group-hover:border-cyan-400/50 sm:inset-x-5 sm:bottom-5">
-                <div className="relative text-center">
-                  <p className="text-sm font-semibold tracking-wide text-white">
-                    Real projects. Real product flows.
-                  </p>
-                  <p className="mt-1 text-[11px] font-medium tracking-wider text-cyan-400">
-                    React <span className="text-cyan-300">&bull;</span> Next.js <span className="text-cyan-300">&bull;</span> Node.js{" "}
-                    <span className="text-cyan-300">&bull;</span> MongoDB
-                  </p>
+              {/* Showcase Caption Footer */}
+              <div className="p-5 bg-[#121215] space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div>
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-sky-400">
+                      {activeProject.category}
+                    </span>
+                    <h3 className="text-lg font-medium text-zinc-100 mt-0.5">
+                      {activeProject.title}
+                    </h3>
+                  </div>
+
+                  <span className="text-xs font-mono text-zinc-400 bg-white/[0.04] px-3 py-1 rounded border border-white/[0.06] w-fit">
+                    {activeProject.metrics}
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {activeProject.stack.map((t) => (
+                    <span key={t} className="mono-badge">
+                      {t}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-
-      <a href="#about" aria-label="Scroll to about section" className="absolute bottom-12 left-1/2 hidden -translate-x-1/2 rounded-full border border-white/10 p-3 text-gray-300 transition hover:border-cyan-300/40 hover:text-cyan-200 lg:block">
-        <ArrowDown className="h-5 w-5 animate-bounce" />
-      </a>
     </section>
   );
 }

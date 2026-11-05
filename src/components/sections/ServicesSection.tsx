@@ -1,32 +1,49 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { services } from "@/data/services";
 
 export function ServicesSection() {
   return (
-    <section id="services" data-animate-section className="section-container py-24">
-      <SectionHeading
-        eyebrow="What I Can Build"
-        title="Useful engineering for teams that need polished web products."
-        description="I can help with frontend execution, full-stack products, integrations, auth systems, and automation-oriented dashboards."
-      />
-      <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
-          <motion.article
-            key={service.title}
-            data-animate-card
-            whileHover={{ y: -6 }}
-            className="rounded-3xl border border-white/10 bg-white/[0.02] p-6 backdrop-blur transition-all duration-300 hover:border-cyan-300/35 hover:bg-white/[0.05] hover:shadow-[0_0_30px_rgba(34,211,238,0.08)] flex flex-col h-full"
-          >
-            <div className="grid h-12 w-12 place-items-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-200">
-              <service.icon className="h-6 w-6" />
+    <section id="services" className="py-28 border-t border-white/[0.08] bg-transparent">
+      <div className="section-container">
+        <SectionHeading
+          eyebrow="05 / Capabilities & Deliverables"
+          title="Engineered solutions for modern web teams."
+          description="High-leverage engineering services tailored for tech startups, product agencies, and scaling engineering teams."
+        />
+
+        {/* Refined Open Grid with Minimal Hairline Separators (No Nested Floating Cards!) */}
+        <div className="mt-16 grid gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service) => (
+            <div
+              key={service.title}
+              className="pt-6 border-t border-white/[0.08] flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between pb-4">
+                  <span className="font-mono text-xs text-zinc-500">
+                    {service.serviceNumber}
+                  </span>
+                  <div className="h-9 w-9 rounded-lg border border-white/10 bg-white/[0.03] flex items-center justify-center text-sky-400">
+                    <service.icon className="h-4 w-4" />
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-medium tracking-tight text-zinc-100 mt-2">
+                  {service.title}
+                </h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-zinc-400 font-normal">
+                  {service.description}
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/[0.04]">
+                <span className="font-mono text-xs text-zinc-500">
+                  Production-Ready &bull; Scalable
+                </span>
+              </div>
             </div>
-            <h3 className="mt-5 text-xl font-bold text-white">{service.title}</h3>
-            <p className="mt-3 text-sm leading-6 text-gray-300 flex-1">{service.description}</p>
-          </motion.article>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -4,17 +4,22 @@ import { experiences } from "@/data/experience";
 
 export function ExperienceTimeline() {
   return (
-    <section id="experience" data-animate-section className="section-container py-24">
-      <SectionHeading
-        eyebrow="Experience"
-        title="A focused timeline of React, SaaS, and full-stack growth."
-        description="From internship UI work to production SaaS screens and independent full-stack projects."
-      />
-      <div className="relative mx-auto mt-14 max-w-4xl">
-        <div className="absolute left-[7px] top-3 h-[calc(100%-24px)] w-px bg-gradient-to-b from-cyan-300 via-white/20 to-transparent" />
-        <div className="grid gap-7">
-          {experiences.map((item) => (
-            <TimelineItem key={`${item.role}-${item.duration}`} item={item} />
+    <section id="experience" className="py-28 border-t border-white/[0.08] bg-transparent">
+      <div className="section-container">
+        <SectionHeading
+          eyebrow="04 / Career & Experience"
+          title="Practical experience building production software."
+          description="A chronological record of full-time frontend roles, agency internship work, and independent engineering projects."
+        />
+
+        {/* Open Editorial Career Ledger (No Dense Cards!) */}
+        <div className="mt-16 space-y-2">
+          {experiences.map((item, index) => (
+            <TimelineItem
+              key={`${item.role}-${item.company}`}
+              item={item}
+              isLast={index === experiences.length - 1}
+            />
           ))}
         </div>
       </div>

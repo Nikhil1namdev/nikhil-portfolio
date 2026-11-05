@@ -3,32 +3,44 @@ import { AppWindow, Bot, Code2, DatabaseZap, LockKeyhole, PanelsTopLeft } from "
 export const services = [
   {
     icon: Code2,
-    title: "Frontend Development",
-    description: "Responsive React and Next.js interfaces with polished motion, clean state, and reusable components."
+    serviceNumber: "01",
+    title: "Frontend Engineering",
+    description:
+      "Modern React and Next.js interfaces with strict type-safety, clean component boundaries, fluid typography, and snappy ergonomics."
   },
   {
     icon: DatabaseZap,
-    title: "Full Stack Web Apps",
-    description: "End-to-end MERN applications with APIs, databases, dashboards, and deployment-ready structure."
+    serviceNumber: "02",
+    title: "Full-Stack Web Applications",
+    description:
+      "End-to-end MERN stack architectures from database schemas and Express routes to reactive frontends and production deployment."
   },
   {
     icon: PanelsTopLeft,
-    title: "SaaS Dashboards",
-    description: "Data-heavy dashboards, product screens, and workflows that feel sharp and easy to use."
+    serviceNumber: "03",
+    title: "SaaS & Product Dashboards",
+    description:
+      "High-density data tables, filtering systems, interactive analytics, and multi-tenant workflows built for daily operational clarity."
   },
   {
     icon: AppWindow,
-    title: "API Integration",
-    description: "REST API integration, webhooks, third-party services, and frontend data flows."
+    serviceNumber: "04",
+    title: "API & Webhook Integrations",
+    description:
+      "Reliable client-server data synchronization, external REST API consumption, webhook event listeners, and background task processing."
   },
   {
     icon: LockKeyhole,
-    title: "Authentication Systems",
-    description: "JWT, OAuth, protected routes, user sessions, and secure role-aware experiences."
+    serviceNumber: "05",
+    title: "Auth & Access Control",
+    description:
+      "Secure Google/GitHub OAuth 2.0 authentication, JSON Web Tokens (JWT), session cookies, and role-based route guard architectures."
   },
   {
     icon: Bot,
-    title: "Automation Dashboards",
-    description: "Automation pipelines and admin panels using n8n, external APIs, and custom business logic."
+    serviceNumber: "06",
+    title: "Workflow Automation & AI",
+    description:
+      "Automating repetitive workflows using n8n orchestration, SerpAPI web gathering, and Google Gemini AI content scoring pipelines."
   }
 ];

@@ -9,17 +9,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#050505"
+        canvas: {
+          DEFAULT: "#09090b",
+          subtle: "#0e0e11"
+        },
+        surface: {
+          DEFAULT: "#131316",
+          elevated: "#18181b",
+          hover: "#1f1f23",
+          border: "rgba(255, 255, 255, 0.08)",
+          "border-strong": "rgba(255, 255, 255, 0.14)"
+        },
+        accent: {
+          DEFAULT: "#38bdf8",
+          hover: "#7dd3fc",
+          subtle: "rgba(56, 189, 248, 0.1)"
+        }
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"]
+        sans: ["var(--font-sans)", "system-ui", "-apple-system", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"]
       },
       boxShadow: {
-        glow: "0 0 60px rgba(34, 211, 238, 0.16)"
-      },
-      backgroundImage: {
-        "grid-pattern":
-          "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)"
+        specular: "inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 20px 40px -15px rgba(0, 0, 0, 0.7)",
+        "card-hover": "inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 25px 50px -12px rgba(0, 0, 0, 0.85)"
       }
     }
   },

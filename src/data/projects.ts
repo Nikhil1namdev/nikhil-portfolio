@@ -1,48 +1,75 @@
-export const projects = [
+export type Project = {
+  id: string;
+  name: string;
+  category: string;
+  tagline: string;
+  description: string;
+  contribution: string;
+  tech: string[];
+  highlights: string[];
+  image?: string;
+  github?: string;
+  live?: string;
+  featured?: boolean;
+};
+
+export const projects: Project[] = [
   {
+    id: "job-pilot",
     name: "Job Pilot",
-    tagline: "AI-Powered Job Automation Dashboard",
+    category: "Full Stack & AI Automation",
+    tagline: "AI-Powered Job Automation & Scoring Dashboard",
     description:
-      "A full-stack dashboard that collects job opportunities, filters relevant roles, removes duplicates, scores jobs using AI, and displays them in a clean dashboard.",
+      "A complete automated intelligence dashboard that aggregates job opportunities from multiple sources via SerpAPI, eliminates redundant duplicates with database checks, and scores each posting using Google Gemini AI before presenting candidates with high-confidence matches in a focused dashboard.",
+    contribution:
+      "Architected the full-stack system, wrote deduplication queries in MongoDB, designed n8n automated trigger workflows, and engineered the high-performance Next.js dashboard UI.",
     tech: ["Next.js", "React", "Tailwind CSS", "MongoDB", "n8n", "Gemini AI", "SerpAPI"],
-    highlights: ["AI job scoring", "Duplicate removal", "Job dashboard", "Automation pipeline", "Status tracking"],
+    highlights: ["Automated AI Job Scoring", "Duplicate Removal Pipeline", "Multi-Source Job Aggregator", "Status Tracking Dashboard"],
     image: "/images/projects/job-pilot.png",
-    gradient: "from-cyan-400/30 via-blue-500/20 to-violet-500/30",
     github: "https://github.com/Nikhil1namdev/job-pilot-dashboard",
-    live: "https://job-pilot-dashboard-peach.vercel.app/"
+    live: "https://job-pilot-dashboard-peach.vercel.app/",
+    featured: true
   },
   {
+    id: "bytebite",
     name: "ByteBite",
-    tagline: "Full-Stack Video-Commerce Engine",
+    category: "Full Stack Engineering",
+    tagline: "Vertical Video-Commerce & Discovery Engine",
     description:
-      "A vertical video-commerce platform inspired by modern short-video experiences with smooth autoplay, media uploads, and interactive product discovery.",
+      "A fast, responsive vertical short-video commerce platform inspired by modern mobile-first feed experiences, built to explore product discovery through video engagement.",
+    contribution:
+      "Engineered the zero-lag autoplay/pause feed using IntersectionObserver, set up cloud media processing with ImageKit, created secure JWT auth endpoints, and handled real-time engagement state.",
     tech: ["React.js", "Node.js", "Express.js", "MongoDB", "ImageKit", "GSAP"],
-    highlights: ["Vertical video feed", "Auto play/pause logic", "Media upload pipeline", "JWT auth", "Product interactions"],
+    highlights: ["Vertical Video Feed", "IntersectionObserver Autoplay", "Media Upload Pipeline", "JWT Authentication"],
     image: "/images/projects/bytebite.png",
-    gradient: "from-fuchsia-400/30 via-rose-500/20 to-orange-400/25",
     github: "https://github.com/Nikhil1namdev/food-view-project",
     live: "https://food-view-project.vercel.app/"
   },
   {
+    id: "project-sync",
     name: "Project Sync",
-    tagline: "Collaborative Workspace Platform",
+    category: "Real-Time Collaboration",
+    tagline: "Collaborative Team Workspace Platform",
     description:
-      "A real-time workspace platform with task boards, drag-and-drop updates, authentication, and real-time collaboration using Socket.io.",
-    tech: ["React.js", "Node.js", "Socket.io", "MongoDB", "JWT", "OAuth"],
-    highlights: ["Real-time drag and drop", "Google/GitHub OAuth", "Team workspace", "Task board", "Live updates"],
+      "A synchronized multi-user project management application enabling distributed engineering teams to track sprints, organize cards, and receive real-time board updates.",
+    contribution:
+      "Built real-time WebSocket communication rooms using Socket.io, integrated Google and GitHub OAuth 2.0 flows, and engineered an intuitive drag-and-drop Kanban interface.",
+    tech: ["React.js", "Node.js", "Socket.io", "MongoDB", "JWT", "OAuth 2.0"],
+    highlights: ["Real-time Kanban Sync", "Google & GitHub OAuth", "Dynamic Team Workspaces", "WebSocket Room Broadcasting"],
     image: "/images/projects/project-sync.png",
-    gradient: "from-emerald-400/30 via-teal-500/20 to-cyan-400/25",
     github: "https://github.com/Nikhil1namdev/project-sync",
     live: "https://project-sync-lac.vercel.app/"
   },
   {
+    id: "outliny",
     name: "Outliny",
-    tagline: "SaaS Frontend Experience",
+    category: "Production SaaS Frontend",
+    tagline: "High-Volume Production SaaS Interface",
     description:
-      "A production-level SaaS interface where I worked on multiple responsive screens, clean UI flows, authentication integration, and performance-focused frontend development.",
+      "A commercial-grade software platform where I developed extensive frontend modules, complex configuration views, data tables, and onboarding flows with a heavy emphasis on design consistency.",
+    contribution:
+      "Engineered 40+ responsive production screens, integrated Google OAuth and webhook notification channels, modularized reusable design components, and improved bundle loading speeds with lazy loading.",
     tech: ["Next.js", "React.js", "Tailwind CSS", "Context API", "OAuth", "Webhooks"],
-    highlights: ["40+ production screens", "Google OAuth integration", "Webhook integration", "Lazy loading", "Reusable components"],
-    gradient: "from-blue-400/30 via-indigo-500/20 to-cyan-400/25"
+    highlights: ["40+ Production Screens", "Webhook Integrations", "Optimized Component Tree", "Modular Design System"]
   }
 ];
-
